@@ -1,5 +1,5 @@
 const { default: mongoose } = require('mongoose');
-const shirtSchema = new mongoose.Schema({
+const productSchema = new mongoose.Schema({
 	name: {
 		type: String,
 		required: true,
@@ -7,7 +7,6 @@ const shirtSchema = new mongoose.Schema({
 	category: {
 		type: String,
 		required: true,
-		enum: ['shortSleeve', 'longSleeve', 'crop', 'tank', 'other'],
 	},
 	price: {
 		type: Number,
@@ -20,5 +19,5 @@ const shirtSchema = new mongoose.Schema({
 	},
 });
 
-const Shirt = mongoose.model('Shirt', shirtSchema);
-module.exports = Shirt;
+const Product = mongoose.model('Product', productSchema);
+module.exports = Product;

@@ -1,0 +1,11 @@
+<%- layout('./layouts/boilerplate') %>
+<h1 class="display-1">Products</h1>
+
+<% for(let product of products) { %>
+<div class="card mb-3 col-3 shadow text-center bg-dark border border-light">
+	<div class="card-body">
+		<h5 class="card-title"><%=product.name%></h5>
+		<p class="card-text">$<%=product.price%></p>
+	</div>
+</div>
+<% } %>

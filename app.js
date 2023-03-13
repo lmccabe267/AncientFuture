@@ -1,10 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const Product = require('./models/Product');
 const app = express();
 const path = require('path');
 const port = 3000;
 const ejsMate = require('ejs-mate');
 const ExpressError = require('./utils/ExpressError');
+const CatchAsync = require('./utils/CatchAsync');
 
 mongoose
 	.connect('mongodb://localhost:27017/ancientFuture', {
@@ -45,6 +47,14 @@ app.get('/admin/finances', (req, res) => {
 app.get('/admin/customers', (req, res) => {
 	res.send('customers');
 });
+
+app.get(
+	'/products',
+	CatchAsync(async (req, res) => {
+		const products = await Product.find();
+		res.render('products/index', { products });
+	}),
+);
 
 app.get('/contact', (req, res) => {
 	res.render('contact');
