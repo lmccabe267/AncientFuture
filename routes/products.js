@@ -11,4 +11,12 @@ router.get(
 	}),
 );
 
+router.get(
+	'/:id',
+	CatchAsync(async (req, res) => {
+		const product = await Product.findById(req.params.id);
+		res.render('products/show', { product });
+	}),
+);
+
 module.exports = router;
